@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form id="userForm">
+        <input type="text" id="FirstName" placeholder="FirstName">
+        <br>
+        <input type="text" id="LastName" placeholder="LastName">
+        <br>
+        <input type="number" id="Mobile-no" placeholder="Mobile">
+        <br>
+        <input type="text" id="email" placeholder="E-Mail">
+        <br>
+        <input type="submit" value="Submit" class="btn" >
+    </form>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Mobile</th>
+                <th>E-mail</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+</body>
+<script>
+    const formditail = []
+    let userForm = document.getElementById('userForm');
+    let tbody = document.querySelector('tbody');
+    userForm.addEventListener('submit',function(e){
+        e.preventDefault();
+        const firstname = document.getElementById("FirstName").value;
+        const lastname = document.getElementById("LastName").value;
+        const mobile = document.getElementById("Mobile-no").value;
+        const email = document.getElementById("email").value;
+
+        const newlist = document.createElement("tr");
+        newlist.innerHTML = `
+        <td>${firstname}</td>
+        <td>${lastname}</td>
+        <td>${mobile}</td>
+        <td>${email}</td>
+        <td><button onclick = 'deleteList(this)'>Delete<button></td>
+    `;  
+    tbody.appendChild(newlist);
+          
+        // console.log(formditail);
+
+    document.getElementById("userForm").reset();
+    });
+    function deleteList(btn){
+        btn.closest('tr').remove();
+    }
+</script>
+</html>
